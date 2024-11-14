@@ -13,5 +13,6 @@ public class Rotator : MonoBehaviour
       
          Debug.Log("test"); 
           Debug.Log("test"); 
+          Debug.Log("test"); 
     }
 }
