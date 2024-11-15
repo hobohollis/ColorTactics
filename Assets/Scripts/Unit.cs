@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class Unit : MonoBehaviour
 {
 
-private Tile  _occupiedTile;
+protected Tile  _occupiedTile;
 public Tile OccupiedTile => _occupiedTile;
 [SerializeField] protected Transform _modelContainer; 
     private void Awake()
@@ -21,7 +21,7 @@ public Tile OccupiedTile => _occupiedTile;
 
     public abstract void HandleSpawnAnimation();
 
-    public void MoveToTile(Tile tile)
+    public virtual void MoveToTile(Tile tile)
     {
         if(_occupiedTile != null) _occupiedTile.ClearOccupiedUnit();
         _occupiedTile = tile;

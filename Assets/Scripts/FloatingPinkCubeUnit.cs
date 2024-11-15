@@ -18,10 +18,18 @@ public class FloatingPinkCubeUnit : Unit
         _modelContainer.DOMove(new Vector3(this._modelContainer.position.x,_modelContainer.position.y +3.5f, _modelContainer.position.z), 3f).SetEase(Ease.OutSine);
         yield return new WaitForSeconds(1f);
         _modelContainer.DOScale(1f, 2f);
+        
     }
 
     public override void HandleSpawnAnimation()
     {
         StartCoroutine(OnSpawnMovement());
+    }
+    public override void MoveToTile(Tile tile)
+    {
+        
+        if(_occupiedTile != null) _occupiedTile.ClearOccupiedUnit();
+        _occupiedTile = tile;
+        transform.DOMove(_occupiedTile.TileUnitPlacement.transform.position, 1f).SetEase(Ease.InFlash, 1);
     }
 }

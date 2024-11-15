@@ -17,4 +17,13 @@ public class TrianglePyramidUnit : Unit
         yield return new WaitForSeconds(1f);
         _modelContainer.DOScale(1f, 2f);
     }
+
+    public override void MoveToTile(Tile tile)
+    {
+        
+        if(_occupiedTile != null) _occupiedTile.ClearOccupiedUnit();
+        _occupiedTile = tile;
+        var dist = Vector3.Distance(this.transform.position, tile.transform.position);
+        transform.DOMove(_occupiedTile.TileUnitPlacement.transform.position, dist*.2f).SetEase(Ease.InOutQuint);
+    }
 }
