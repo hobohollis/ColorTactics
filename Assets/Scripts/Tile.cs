@@ -18,6 +18,17 @@ public class Tile : MonoBehaviour
 
    public Action OnTileLowered;
    private Vector3 _initialScale;
+   [SerializeField]private GameObject _spawnIndicator;
+
+   private void OnValidate()
+   {
+      _spawnIndicator.gameObject.SetActive(_unitToSpawn != null);
+   }
+
+   private void Awake()
+   {
+      _spawnIndicator.gameObject.SetActive(false);
+   }
 
    public void ActivateTile()
    {
@@ -63,7 +74,7 @@ public class Tile : MonoBehaviour
       ////////// Lerp Color from clear to black
          
          float counter = 0;
-         float duration = 1f;
+         float duration = .1f;
          var spawnPlaneRenderer = _spawnPlane.GetComponent<Renderer>();
          while (counter < duration)
          {
@@ -102,31 +113,34 @@ public class Tile : MonoBehaviour
       while (yScalecounter < yScaleduration)
       {
          yScalecounter += Time.deltaTime;
-        
-      
+         
          yield return null;
       }
     
    var spawnedUnit = Instantiate(_unitToSpawn, transform.position, Quaternion.identity);
-Debug.Log($"SpawnedUnit name is {spawnedUnit.name}");
-   spawnedUnit.transform.DOMove(new Vector3(this.transform.position.x,transform.position.y +2, transform.position.z), 2f);
-   yield return new WaitForSeconds(1f);
+
+   yield return new WaitForSeconds(3f);
+  
    
    float counterTwo = 0;
    float durationTwo = 1f;
+   Color goalColor = new Color(217, 217, 217, 1);
    while (counterTwo < durationTwo)
    {
       counterTwo += Time.deltaTime;
 
       float colorTime = counterTwo / durationTwo;
-      Debug.Log (colorTime);
+      Debug.Log ("lerping color to fade out");
 
       //Change color
-      spawnPlaneRenderer.material.color = Color.Lerp (Color.black, Color.clear, counterTwo / durationTwo);
+      
+      spawnPlaneRenderer.material.color = Color.Lerp (Color.black, Color.white , counterTwo / durationTwo);
       //Wait for a frame
       yield return null;
    }
-      
+
+   spawnPlaneRenderer.material.color = goalColor; 
+   _spawnPlane.gameObject.SetActive(false);
       yield return null;
    }
 

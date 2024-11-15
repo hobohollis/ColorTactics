@@ -11,8 +11,5 @@ public class Rotator : MonoBehaviour
     void Update()
     { transform.Rotate(_RotationSpeedX * .1f,_RotationSpeedY* .1f, _RotationSpeedZ* .1f, Space.Self);
       
-         Debug.Log("test"); 
-          Debug.Log("test"); 
-          Debug.Log("test"); 
     }
 }

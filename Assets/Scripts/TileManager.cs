@@ -58,6 +58,7 @@ public class TileManager : MonoBehaviour
         var distanceRaised = 0f;
         var raiseSpeed = 2.5f;
         var endHeightDiff = 2.5f; 
+        StartTileSpawns();
         while (distanceRaised < endHeightDiff)
         {
             var amountToRaise = Time.deltaTime * raiseSpeed;
@@ -67,7 +68,7 @@ public class TileManager : MonoBehaviour
         }
         _crackFill.transform.position = new Vector3(startPos.x, startPos.y + endHeightDiff,startPos.z);
 
-        StartTileSpawns();
+        
     }
 
     private void StartTileSpawns()
