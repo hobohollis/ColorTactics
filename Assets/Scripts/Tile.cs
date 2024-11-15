@@ -125,8 +125,7 @@ public class Tile : MonoBehaviour
       }
     
    var spawnedUnit = Instantiate(_unitToSpawn, transform.position, Quaternion.identity);
-   spawnedUnit.Init(this);
-   _occuipiedUnit = spawnedUnit;
+   SetToOccupyTile(spawnedUnit);
    yield return new WaitForSeconds(3f);
   
    

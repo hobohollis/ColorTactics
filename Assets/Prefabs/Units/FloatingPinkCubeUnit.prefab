@@ -100,6 +100,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2722655273225209759, guid: b2203a740086d4246b506f1f60a876ae,
         type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2722655273225209759, guid: b2203a740086d4246b506f1f60a876ae,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
@@ -240,3 +245,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d0db8c00b477246883ffc25a7c72d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _modelContainer: {fileID: 1244316053337662673}

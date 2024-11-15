@@ -9,6 +9,7 @@ public abstract class Unit : MonoBehaviour
 
 private Tile  _occupiedTile;
 public Tile OccupiedTile => _occupiedTile;
+[SerializeField] protected Transform _modelContainer; 
     private void Awake()
     {
 
@@ -22,13 +23,9 @@ public Tile OccupiedTile => _occupiedTile;
 
     public void MoveToTile(Tile tile)
     {
-        _occupiedTile.ClearOccupiedUnit();
+        if(_occupiedTile != null) _occupiedTile.ClearOccupiedUnit();
         _occupiedTile = tile;
         transform.DOMove(_occupiedTile.TileUnitPlacement.transform.position, 1f).SetEase(Ease.OutBounce);
     }
 
-    public void Init(Tile tile)
-    {
-       _occupiedTile = tile;
-    }
 }

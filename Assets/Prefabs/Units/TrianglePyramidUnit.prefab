@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2722655273225209759, guid: b2203a740086d4246b506f1f60a876ae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6114421993924849015, guid: b2203a740086d4246b506f1f60a876ae,
         type: 3}
       propertyPath: m_Name
@@ -125,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e03f72919ba5e42a1eba1c3096bdd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _modelContainer: {fileID: 2886626571083026512}
 --- !u!1001 &8393324153536442210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,6 +188,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e6971578f0dcc9340bfc84f9f33e2a70,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 259
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e6971578f0dcc9340bfc84f9f33e2a70,
         type: 3}

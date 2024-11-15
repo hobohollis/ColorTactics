@@ -12,9 +12,9 @@ public class TrianglePyramidUnit : Unit
     
     private IEnumerator OnSpawnMovement()
     {
-        transform.DOScale(.5f, .01f);
-        transform.DOMove(new Vector3(this.transform.position.x,transform.position.y +3.5f, transform.position.z), 3f).SetEase(Ease.OutSine);
+        _modelContainer.DOScale(.5f, .01f);
+        _modelContainer.DOMove(new Vector3(this._modelContainer.position.x,_modelContainer.position.y +3.5f, _modelContainer.position.z), 3f).SetEase(Ease.OutSine);
         yield return new WaitForSeconds(1f);
-        transform.DOScale(1f, 2f);
+        _modelContainer.DOScale(1f, 2f);
     }
 }
