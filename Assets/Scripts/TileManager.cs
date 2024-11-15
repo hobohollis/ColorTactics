@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -53,22 +54,15 @@ public class TileManager : MonoBehaviour
 
     public IEnumerator ActivateCrackFill()
     {
-       var startPos = _crackFill.transform.position;
         _crackFill.gameObject.SetActive(true);
-        var distanceRaised = 0f;
-        var raiseSpeed = 2.5f;
+        var raiseSpeed = 2.1f;
         var endHeightDiff = 2.5f; 
         StartTileSpawns();
-        while (distanceRaised < endHeightDiff)
-        {
-            var amountToRaise = Time.deltaTime * raiseSpeed;
-            _crackFill.transform.position += Vector3.up * amountToRaise;
-            distanceRaised += amountToRaise;
-            yield return null;
-        }
-        _crackFill.transform.position = new Vector3(startPos.x, startPos.y + endHeightDiff,startPos.z);
-
-        
+        Vector3 goalScale = new Vector3(_crackFill.transform.localScale.x * 2, _crackFill.transform.localScale.y,
+            _crackFill.transform.localScale.z * 2);
+        _crackFill.DOScale(goalScale, 1);
+        _crackFill.transform.DOMove(new Vector3( _crackFill.transform.position.x, _crackFill.transform.position.y + endHeightDiff ,  _crackFill.transform.position.z ), raiseSpeed);
+        yield return null;
     }
 
     private void StartTileSpawns()

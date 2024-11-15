@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class TrianglePyramidUnit : Unit
+public class FloatingPinkCubeUnit : Unit
 {
-    public override void HandleSpawnAnimation()
+    // Start is called before the first frame update
+    void Start()
     {
-        StartCoroutine(OnSpawnMovement());
+        HandleSpawnAnimation();
     }
+    
     
     private IEnumerator OnSpawnMovement()
     {
@@ -16,5 +18,10 @@ public class TrianglePyramidUnit : Unit
         transform.DOMove(new Vector3(this.transform.position.x,transform.position.y +3.5f, transform.position.z), 3f).SetEase(Ease.OutSine);
         yield return new WaitForSeconds(1f);
         transform.DOScale(1f, 2f);
+    }
+
+    public override void HandleSpawnAnimation()
+    {
+        StartCoroutine(OnSpawnMovement());
     }
 }
