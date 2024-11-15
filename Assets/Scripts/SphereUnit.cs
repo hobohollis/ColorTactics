@@ -17,7 +17,7 @@ public class SphereUnit : Unit
         transform.DOMove(new Vector3(this.transform.position.x,transform.position.y +3.5f, transform.position.z), 3f).SetEase(Ease.OutSine);
         yield return new WaitForSeconds(1f);
         transform.DOScale(1f, 2f);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.25f);
         transform.DOMove(new Vector3(this.transform.position.x,transform.position.y -1.5f, transform.position.z), 3f).SetEase(Ease.OutSine);
     }
 }

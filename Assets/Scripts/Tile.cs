@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,14 +13,20 @@ public class Tile : MonoBehaviour
    [SerializeField] private float _lowerSpeed = 1f;
    [SerializeField] private float _lowerSpeedDiff = 10f;
    [SerializeField] private GameObject _spawnPlane;
+   
+   [SerializeField] private Transform _tileUnitPlacement;
+   public Transform TileUnitPlacement => _tileUnitPlacement;
 
    [SerializeField] private Unit _unitToSpawn;
    private Vector3 _startPosition;
 
    public Action OnTileLowered;
    private Vector3 _initialScale;
+   private Vector2 _coords;
    [SerializeField]private GameObject _spawnIndicator;
-
+   
+   private Unit _occuipiedUnit;
+   public Unit OccuipiedUnit => _occuipiedUnit;
    private void OnValidate()
    {
       _spawnIndicator.gameObject.SetActive(_unitToSpawn != null);
@@ -118,7 +125,8 @@ public class Tile : MonoBehaviour
       }
     
    var spawnedUnit = Instantiate(_unitToSpawn, transform.position, Quaternion.identity);
-
+   spawnedUnit.Init(this);
+   _occuipiedUnit = spawnedUnit;
    yield return new WaitForSeconds(3f);
   
    
@@ -128,10 +136,7 @@ public class Tile : MonoBehaviour
    while (counterTwo < durationTwo)
    {
       counterTwo += Time.deltaTime;
-
-      float colorTime = counterTwo / durationTwo;
-      Debug.Log ("lerping color to fade out");
-
+      
       //Change color
       
       spawnPlaneRenderer.material.color = Color.Lerp (Color.black, Color.white , counterTwo / durationTwo);
@@ -144,4 +149,20 @@ public class Tile : MonoBehaviour
       yield return null;
    }
 
+   public void SetCoords(int x, int y)
+   {
+      _coords.x =x;
+      _coords.y =y;
+   }
+
+   public void SetToOccupyTile(Unit selectedUnit)
+   {
+      _occuipiedUnit = selectedUnit;
+      selectedUnit.MoveToTile(this);
+   }
+
+   public void ClearOccupiedUnit()
+   {
+      _occuipiedUnit = null;
+   }
 }
