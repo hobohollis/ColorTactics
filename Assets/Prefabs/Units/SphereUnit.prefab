@@ -8,10 +8,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5365988369419097809}
     m_Modifications:
+    - target: {fileID: 124575927074996324, guid: bef92815a8ac64f4990f4c3c7ef3dbef,
+        type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 1658389776543074655, guid: bef92815a8ac64f4990f4c3c7ef3dbef,
         type: 3}
       propertyPath: m_Name
       value: Sphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658389776543074655, guid: bef92815a8ac64f4990f4c3c7ef3dbef,
+        type: 3}
+      propertyPath: m_TagString
+      value: Unit
       objectReference: {fileID: 0}
     - target: {fileID: 6728860006451915038, guid: bef92815a8ac64f4990f4c3c7ef3dbef,
         type: 3}
@@ -100,7 +110,7 @@ PrefabInstance:
     - target: {fileID: 6114421993924849015, guid: b2203a740086d4246b506f1f60a876ae,
         type: 3}
       propertyPath: m_Name
-      value: SphereUnit2
+      value: SphereUnit
       objectReference: {fileID: 0}
     - target: {fileID: 8189272540133125095, guid: b2203a740086d4246b506f1f60a876ae,
         type: 3}

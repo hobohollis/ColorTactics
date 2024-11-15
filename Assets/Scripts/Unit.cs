@@ -8,6 +8,7 @@ public abstract class Unit : MonoBehaviour
 {
 
 private Tile  _occupiedTile;
+public Tile OccupiedTile => _occupiedTile;
     private void Awake()
     {
 
